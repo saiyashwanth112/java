@@ -1,0 +1,62 @@
+import java.util.*;
+class Complex
+{
+int real;
+int img;
+Scanner sc=new Scanner(System.in);
+Complex()
+{
+System.out.println("enter the real number");
+real=sc.nextInt();
+System.out.println("enter the img number");
+img=sc.nextInt();
+}
+Complex(int real,int img)
+{
+this.real=real;
+this.img=img;
+}
+Complex(Complex c1)
+{
+real=c1.real;
+img=c1.img;
+}
+void addComplex(Complex c)
+{
+Complex result=new Complex(0,0);
+result.real=this.real+c.real;
+result.img=this.img+c.img;
+System.out.println("add of Complex is="+result.real+"i"+result.img);
+}
+void subComplex(Complex c)
+{
+Complex result=new Complex(0,0);
+result.real=this.real-c.real;
+result.img=this.img-c.img;
+System.out.println("sub of Complex is="+result.real+"i"+result.img);
+}
+void multiplicationComplex(Complex c)
+{
+Complex result=new Complex(0,0);
+result.real=(this.real*c.real-this.img*c.img);
+result.img=(this.img*c.real+this.real*c.img);
+System.out.println("multiplication of Complex is="+result.real+"i"+result.img);
+}
+void divComplex(Complex c)
+{
+Complex result=new Complex(0,0);
+result.real=this.real/c.real;
+result.img=this.img/c.img;
+System.out.println("div of Complex is="+result.real+"i"+result.img);
+}
+public static void main(String args[])
+{
+Complex c1=new Complex();
+Complex c2=new Complex(10,20);
+Complex c3=new Complex(c2);
+c1.addComplex(c2);
+c2.subComplex(c1);
+c3.multiplicationComplex(c1);
+c3.divComplex(c1);
+}
+}
