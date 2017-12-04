@@ -1,0 +1,53 @@
+import java.io.*;
+ class Sai
+{
+float dim1,dim2;
+float area1;
+void area(){}
+}
+class Triangle extends Sai
+{
+Triangle(double x,double y)
+{
+super.dim1=(float)x;
+super.dim2=(float)y;
+}
+public void area()
+{
+area1=0.5f*dim1*dim2;
+}
+void show()
+{
+System.out.println("the area is "+area1);
+}
+}
+class Circle extends Sai
+{
+Circle(float dim1)
+{
+super.dim1=dim1;
+}
+public void area()
+{
+area1=3.14f*dim1*dim1;
+}
+void show()
+{
+System.out.println("the area of the circle is"+area1);
+}
+}
+class Main
+{
+public static void main(String args[])
+{
+Triangle t=new Triangle(10.0,20.0);
+Sai s;
+s=t;
+s.area();
+t.show();
+Circle c=new Circle(20.0f);
+s=c;
+s.area();
+c.show();
+}
+}

@@ -1,0 +1,27 @@
+import java.util.*;
+class Sai
+{
+public static void main(String args[])
+{
+Obj c1=new Obj(84,"sam");
+Obj c2=new Obj(85,"san");
+}
+}
+class Obj
+{
+int roll;
+String name;
+static
+{
+System.out.println("welcome to third year IT-B");
+}
+{
+System.out.println("welcome user");
+}
+Obj( int x,String n)
+{
+roll=x;
+name=n;
+System.out.println("Roll="+roll+"          "+"name="+name);
+}
+}

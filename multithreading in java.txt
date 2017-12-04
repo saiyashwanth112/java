@@ -1,0 +1,56 @@
+import java.io.*;
+import  java.util.*;
+class Add extends Thread
+{
+int a,b,sum;
+Add(int a,int b)
+{
+super("Add");
+System.out.println(this);
+this.a=a;
+this.b=b;
+start();
+}
+public void run()
+{
+sum=a+b;
+System.out.println("Sum is"+sum);
+}
+}
+class Sub implements Runnable
+{
+int c,d,diff;
+Thread t;
+Sub(int c,int d)
+{
+t=new Thread(this,"Sub");
+System.out.println(t);
+this.c=c;
+this.d=d;
+t.start();
+}
+public void run()
+{
+diff=c-d;
+System.out.println("Difference is"+diff);
+}
+}
+class Sai
+{
+public static void main(String args[])
+{
+Add a=new Add(10,20);
+Sub b=new Sub(40,30);
+try
+{
+b.t.join();
+a.join();
+}
+catch(Exception e)
+{
+System.out.println(e.toString());
+}
+System.out.println(a.sum*b.diff);
+System.out.println("Exit main thread");
+}
+}

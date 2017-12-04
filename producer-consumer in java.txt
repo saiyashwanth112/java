@@ -1,0 +1,77 @@
+import java.io.*;
+import java.util.*;
+class Producer extends Thread
+{
+Stock s;
+Producer(Stock s)
+{
+super("Producerthread");
+this.s=s;
+start();
+}
+public void run()
+{
+for(int i=0;i<10;i++)
+s.set();
+}
+}
+class Consumer implements Runnable
+{
+Thread t;
+Stock s;
+Consumer(Stock s)
+{
+t=new Thread(this,"ConsumerThread");
+this.s=s;
+t.start();
+}
+public void run()
+{
+for(int i=0;i<10;i++)
+s.get();
+}
+}
+class Stock
+{
+int items;
+synchronized public void set()
+{
+while(items>=5)
+{
+try
+{
+wait();
+}
+catch(Exception e)
+{
+System.out.println(e.toString());
+}
+}
+System.out.println("Producer item:"+(++items));
+notify();
+}
+synchronized public void get()
+{
+while(items<=0)
+{
+try{
+wait();
+}
+catch(Exception e)
+{
+System.out.println("Exception");
+}
+}
+System.out.println("Consumed item:"+(items--));
+notify();
+}
+}
+class Sai
+{
+public static void main(String args[])
+{
+Stock s=new Stock();
+Producer p=new Producer(s);
+Consumer c=new Consumer(s);
+}
+}

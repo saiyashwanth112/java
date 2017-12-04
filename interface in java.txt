@@ -1,0 +1,54 @@
+import java.io.*;
+interface Figure
+{
+void area();
+}
+class Triangle implements Figure
+{
+int breadth,height,area;
+Triangle(int b,int h)
+{
+breadth=b;
+height=h;
+}
+public void area()
+{
+area=(breadth*height)/2;
+}
+void show()
+{
+System.out.println("area of the triangle="+area);
+}
+}
+class Rectangle implements Figure
+{
+int length,breadth,area;
+Rectangle( int l,int b)
+{
+length=l;
+breadth=b;
+}
+public void area()
+{
+area=(length*breadth);
+}
+void show()
+{
+System.out.println("area of the rectangle="+area);
+}
+}
+class Sai
+{
+public static void main(String args[])
+{
+Triangle t1=new Triangle(10,20);
+Rectangle r1=new Rectangle(20,40);
+Figure F1;
+F1=t1;
+F1.area();
+t1.show();
+F1=r1;
+F1.area();
+r1.show();
+}
+}
